@@ -16,12 +16,11 @@ import BaseRouter from '@src/routes/api';
 
 const app = express();
 
-
 // **** Setup **** //
 
 // Basic middleware
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 
 // Show routes called in console during development
 if (env.NODE_ENV === 'development') {
@@ -47,7 +46,7 @@ app.use((
   if (env.NODE_ENV === 'development') {
     logger.err(err, true);
   }
-  
+
 
   return res.status(500).json({ error: err.message });
 });

@@ -7,10 +7,10 @@ const database = new Database(env.DATABASE_URL + '');
 database.pragma('journal_mode = WAL');
 
 const dialect = new SqliteDialect({
-  database, 
+  database,
 });
 
 export const db = new Kysely<DB>({
   dialect,
-  log: ['query'],
+  // log: ['query'],
 });
