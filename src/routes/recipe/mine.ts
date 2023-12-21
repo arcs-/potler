@@ -4,7 +4,6 @@ export async function mine(req: ApiRequest, res: ApiResponse) {
 
 	const recipes = await db.selectFrom('recipe')
 		.where('author_id', "=", req.auth!.id)
-		.limit(20)
 		.selectAll()
 		.execute();
 

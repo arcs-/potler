@@ -74,6 +74,7 @@
   },
   "include": [
     "src/**/*.ts",
-    "build.ts"
+    "build.ts", 
+    "migrate.ts"
   ],
 }

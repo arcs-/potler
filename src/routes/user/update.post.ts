@@ -21,7 +21,7 @@ export async function update(
 		first_name: req.body.first_name,
 		last_name: req.body.last_name,
 		email: req.body.email,
-		family_id: req.body.family_id ?? null,
+		family_id: req.body.family_id,
 	};
 
 	if (req.body.password) {
@@ -33,7 +33,6 @@ export async function update(
 		.where('id', '=', req.auth!.id)
 		.returningAll()
 		.executeTakeFirstOrThrow();
-
 	inserted.login_hash = null;
 
 	res.json({

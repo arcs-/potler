@@ -1,7 +1,7 @@
 
 import { expressjwt } from "express-jwt";
-import env from '@src/env'
 import { sign } from 'jsonwebtoken';
+import env from '@src/services/env'
 
 export interface AuthPayload {
 	id: number;

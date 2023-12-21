@@ -20,6 +20,13 @@ export async function like(req: ApiRequest<typeof likeSchema>, res: ApiResponse)
 		})))
 		.execute();
 
+	await db.updateTable('recipe')
+		.where('id', 'in', req.body.ids)
+		.set(eb => ({
+			likes: eb('likes', '+', 1)
+		}))
+		.execute();
+
 	res.json({
 		state: 'success'
 	});

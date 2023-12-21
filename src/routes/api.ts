@@ -35,6 +35,6 @@ recipeRouter.get('/mine', mine);
 recipeRouter.get('/one', processRequestBody(oneSchema), one);
 recipeRouter.post('/', processRequestBody(addSchema), add);
 recipeRouter.post('/like', processRequestBody(likeSchema), like);
-recipeRouter.get('/otherLikes', otherLikes);
+recipeRouter.get('/other-likes', otherLikes);
 
 export default apiRouter;

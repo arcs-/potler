@@ -6,5 +6,6 @@ export async function all(req: ApiRequest, res: ApiResponse) {
   const users = await db.selectFrom('user')
     .selectAll()
     .execute();
+
   res.json(users);
 }
