@@ -1,10 +1,10 @@
 import { DB } from 'kysely-codegen';
 import Database from 'better-sqlite3';
-import { Kysely, SqliteDialect } from 'kysely';
+import { Kysely, ParseJSONResultsPlugin, SqliteDialect } from 'kysely';
 import env from '@src/env';
 
 const database = new Database(env.DATABASE_URL + '');
-database.pragma('journal_mode = WAL');
+// database.pragma('journal_mode = WAL');
 
 const dialect = new SqliteDialect({
   database,
@@ -12,5 +12,6 @@ const dialect = new SqliteDialect({
 
 export const db = new Kysely<DB>({
   dialect,
-  // log: ['query'],
+  plugins: [new ParseJSONResultsPlugin()],
+  log: ['query'],
 });

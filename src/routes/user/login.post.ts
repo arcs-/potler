@@ -1,6 +1,3 @@
-import type { Response } from 'express';
-import type { TypedRequestBody } from 'zod-express-middleware';
-import type { Request } from "express-jwt";
 import { z, object } from 'zod';
 import { generateToken } from '@src/services/auth';
 import { db } from '@src/services/database';
@@ -8,12 +5,12 @@ import argon2 from '@node-rs/argon2'
 
 export const loginSchema = object({
   email: z.string(),
-  password: z.string().optional(),
+  password: z.string(),
 });
 
 export async function login(
-  req: TypedRequestBody<typeof loginSchema> & Request,
-  res: Response,
+  req: ApiRequest<typeof loginSchema>,
+  res: ApiResponse,
 ) {
 
   const user = await db.selectFrom('user')

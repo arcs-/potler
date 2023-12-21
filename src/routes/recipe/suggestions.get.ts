@@ -1,16 +1,21 @@
-import type { Request, Response } from 'express';
 import { db } from '@src/services/database';
+import { z, object } from 'zod';
+import { withIngredients } from '@src/utils/query';
 
-export async function suggestions(req: Request, res: Response) {
+export const suggestionsSchema = object({
+  position: z.number(),
+});
+
+export async function suggestions(req: ApiRequest<typeof suggestionsSchema>, res: ApiResponse) {
 
   // select likes from other in group
 
-  // add some more
-
-  const users = await db.selectFrom('recipe')
+  const suggestions = await db.selectFrom('recipe')
     .limit(20)
+    .offset(req.body.position)
     .selectAll()
+    .select((eb) => [withIngredients(eb)])
     .execute();
 
-  res.json(users);
+  res.json(suggestions);
 }
