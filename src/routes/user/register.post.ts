@@ -34,7 +34,6 @@ export async function register(
   const token = generateToken(inserted);
 
   res.json({
-    state: 'success',
     user: inserted,
     token,
   });

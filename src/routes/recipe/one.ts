@@ -14,8 +14,5 @@ export async function one(req: ApiRequest<typeof oneSchema>, res: ApiResponse) {
 		.select((eb) => [withIngredients(eb)])
 		.executeTakeFirstOrThrow();
 
-	res.json({
-		state: 'success',
-		recipe,
-	});
+	res.json(recipe);
 }

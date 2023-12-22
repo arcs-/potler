@@ -36,7 +36,6 @@ export async function update(
 	inserted.login_hash = null;
 
 	res.json({
-		state: 'success',
 		user: inserted,
 	});
 }

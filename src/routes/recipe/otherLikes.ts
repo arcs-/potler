@@ -8,7 +8,7 @@ export async function otherLikes(req: ApiRequest, res: ApiResponse) {
 		.executeTakeFirstOrThrow();
 
 	const otherLikes = await db.selectFrom('like')
-		.where('family_id', "=", user.family_id)
+		.where('family_id', "=", user.family_id ?? req.auth!.id)
 		.select(['recipe_id', 'user_id'])
 		.execute();
 

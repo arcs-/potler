@@ -49,10 +49,7 @@ export async function add(
         .executeTakeFirstOrThrow();
 
     res.json({
-        state: 'success',
-        recipe: {
-            ...recipe,
-            ingredients,
-        }
+        ...recipe,
+        ingredients,
     });
 }

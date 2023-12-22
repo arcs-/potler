@@ -4,7 +4,7 @@ import { Kysely, ParseJSONResultsPlugin, SqliteDialect } from 'kysely';
 import env from '@src/services/env';
 
 const database = new Database(env.DATABASE_URL + '');
-// database.pragma('journal_mode = WAL');
+database.pragma('journal_mode = WAL');
 
 const dialect = new SqliteDialect({
   database,
