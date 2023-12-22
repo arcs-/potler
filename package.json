@@ -1,25 +1,16 @@
 {
-  "name": "express-gen-ts",
-  "version": "0.0.0",
+  "name": "potler",
+  "version": "0.1.0",
   "scripts": {
     "migrate": "npx ts-node src/migrate.ts",
     "gen": "kysely-codegen --out-file src/@types/kysely.d.ts",
     "dev": "nodemon",
-    "build": "npx tsc",
-    "prod": "node dist/index.js"
+    "build": "npx tsc && tsc-alias",
+    "prod": "node -r tsconfig-paths/register dist/index.js"
   },
   "nodemonConfig": {
-    "watch": [
-      "src"
-    ],
-    "ext": "ts, html",
-    "ignore": [
-      "src/public"
-    ],
+    "watch": [ "src" ],
     "exec": "./node_modules/.bin/ts-node --files -r tsconfig-paths/register ./src"
-  },
-  "_moduleAliases": {
-    "@src": "dist"
   },
   "engines": {
     "node": ">=18"
@@ -40,6 +31,7 @@
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
     "sharp-multer": "^0.3.2",
+    "tsconfig-paths": "^4.2.0",
     "zod": "^3.22.4",
     "zod-express-middleware": "^1.4.0"
   },
@@ -53,7 +45,7 @@
     "kysely-codegen": "^0.11.0",
     "nodemon": "^3.0.2",
     "ts-node": "^10.9.2",
-    "tsconfig-paths": "^4.2.0",
+    "tsc-alias": "^1.8.8",
     "typescript": "^5.3.3"
   }
 }
