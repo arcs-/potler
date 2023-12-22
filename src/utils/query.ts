@@ -1,6 +1,6 @@
+import type { DB } from '@src/@types/kysely';
 import { ExpressionBuilder } from "kysely";
 import { jsonArrayFrom } from "kysely/helpers/sqlite";
-import { DB } from "kysely-codegen";
 
 export function withIngredients(eb: ExpressionBuilder<DB, 'recipe'>) {
 	return jsonArrayFrom(

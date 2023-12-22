@@ -1,4 +1,4 @@
-import type { Ingredient, Recipe } from 'kysely-codegen';
+import type { Ingredient, Recipe } from '@src/@types/kysely';
 import type { Insertable } from 'kysely';
 import { db } from '@src/services/database';
 import { z, object } from 'zod';
@@ -8,6 +8,7 @@ export const addSchema = object({
     description: z.string().max(1024).optional(),
     instructions: z.string().max(1024).optional(),
     source: z.string().max(1024).optional(),
+    cover: z.string().max(1024).optional(),
     ingredients: z.array(z.object({
         name: z.string().max(255).min(2),
         amount: z.string(),
@@ -27,6 +28,7 @@ export async function add(
         description: req.body.description,
         instructions: req.body.instructions,
         source: req.body.source,
+        cover: req.body.cover,
         author_id: req.auth!.id,
     };
 

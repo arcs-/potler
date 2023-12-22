@@ -12,11 +12,20 @@ import { one, oneSchema } from './recipe/one';
 import { like, likeSchema } from './recipe/like.post';
 import { otherLikes } from './recipe/otherLikes';
 import { me } from './user/me.get';
+import { upload } from './utils/upload.post';
+import { parseImage } from '@src/services/upload';
 
 const apiRouter = Router();
 apiRouter.use(authMiddleware.unless({
 	path: ["/api/user/login", "/api/user/register"]
 }))
+
+
+
+// ** UtilsRouter ** //
+const utilRouter = Router();
+apiRouter.use('/util', utilRouter);
+utilRouter.post('/upload', parseImage('image'), upload);
 
 // ** UserRouter ** //
 const userRouter = Router();

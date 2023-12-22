@@ -1,4 +1,4 @@
-import { DB } from 'kysely-codegen';
+import type { DB } from '@src/@types/kysely';
 import Database from 'better-sqlite3';
 import { Kysely, ParseJSONResultsPlugin, SqliteDialect } from 'kysely';
 import env from '@src/services/env';

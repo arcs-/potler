@@ -1,9 +1,9 @@
 import type { Insertable } from 'kysely'
+import type { User } from '@src/@types/kysely';
 import { db } from '@src/services/database';
 import { z, object } from 'zod';
 import argon2 from '@node-rs/argon2'
 import { generateToken } from '@src/services/auth';
-import { User } from 'kysely-codegen';
 
 export const registerSchema = object({
   email: z.string(),
