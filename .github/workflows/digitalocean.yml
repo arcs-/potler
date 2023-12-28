@@ -5,9 +5,9 @@ name: Deploy to DigitalOcean
 
 on:
   push:
-    branches: [ "nuxt" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "nuxt" ]
+    branches: [ "main" ]
 
 jobs:
   deploy:
@@ -23,7 +23,7 @@ jobs:
         port: ${{ secrets.SSH_PORT }}
         script: |
           cd ~/potler-api
-          git pull origin nuxt
+          git pull origin main
           pnpm install
           pnpm run build
-          pm2 restart potler-api
+          pm2 restart potler
