@@ -5,6 +5,7 @@ import env from '@src/services/env';
 import morgan from 'morgan';
 import helmet from 'helmet';
 import express, { Request, Response, NextFunction } from 'express';
+import { StatusCodes } from 'http-status-codes';
 
 import BaseRouter from '@src/routes/api';
 
@@ -27,7 +28,9 @@ app.use((
 	next: NextFunction,
 ) => {
 	if (env.NODE_ENV === 'development') logger.err(err, true);
-	return res.status(500).json({ error: err.message });
+	return res
+		.status(StatusCodes.INTERNAL_SERVER_ERROR)
+		.json({ error: err.message });
 });
 
 // **** Run **** //

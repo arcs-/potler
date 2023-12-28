@@ -2,6 +2,7 @@ import { z, object } from 'zod';
 import { generateToken } from '@src/services/auth';
 import { db } from '@src/services/database';
 import argon2 from '@node-rs/argon2'
+import { StatusCodes } from 'http-status-codes';
 
 export const loginSchema = object({
   email: z.string(),
@@ -20,14 +21,14 @@ export async function login(
 
   if (!user) {
     res
-      .status(401)
+      .status(StatusCodes.BAD_REQUEST)
       .json({ state: 'error', message: 'User not found' })
     return;
   }
 
   if (!user.login_hash) {
     res
-      .status(401)
+      .status(StatusCodes.BAD_REQUEST)
       .json({ state: 'error', message: 'Passwordless is not supported' })
     return;
   }
@@ -36,7 +37,7 @@ export async function login(
     const hashVerified = await argon2.verify(user.login_hash, req.body.password);
     if (!hashVerified) {
       res
-        .status(401)
+        .status(StatusCodes.BAD_REQUEST)
         .json({ state: 'error', message: 'Invalid password' })
       return;
     }
