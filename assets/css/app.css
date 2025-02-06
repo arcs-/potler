@@ -1,0 +1,11 @@
+/* tailwind base */
+@import 'tailwindcss/base';
+@import "_base.css";
+
+/* tailwind components */
+@import 'tailwindcss/components';
+@import "_helpers.css";
+@import "_transitions.css";
+
+/* tailwind utilities */
+@import 'tailwindcss/utilities';

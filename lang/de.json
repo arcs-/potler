@@ -1,0 +1,8 @@
+{
+	"switch_language": "Sprache wechseln",
+  "error": {
+    "404": "Die Seite konnte nicht gefunden werden.",
+    "500": "Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.",
+    "backToHomepage": "Zur Startseite"
+  }
+}

@@ -1,0 +1,21 @@
+@layer utilities {
+  .h-screen {
+    height: 100vh;
+    height: 100svh;
+  }
+
+  .min-h-screen {
+    min-height: 100vh;
+    min-height: 100svh;
+  }
+
+  .min-h-section {
+    min-height: calc(100vh - var(--navbar-height-small));
+    min-height: calc(100svh - var(--navbar-height-small));
+  }
+
+  .graph-paper {
+    background-image: linear-gradient(#eee 1px, transparent 1px), linear-gradient(90deg, #eee 1px, transparent 1px);
+    background-size: 13px 13px, 13px 13px;
+  }
+}

@@ -1,0 +1,8 @@
+{
+	"switch_language": "Changer de langue",
+  "error": {
+    "404": "La page n'a pas pu être trouvée.",
+    "500": "Une erreur s'est produite. Veuillez réessayer plus tard.",
+    "backToHomepage": "Retour à la page d'accueil"
+  }
+}
